@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.view.View;
 import android.content.Intent;
@@ -31,18 +32,24 @@ public class Main extends Activity {
         button_action = (Button) findViewById(R.id.button_register);
 
         query = new Query(this);
-        extras = getIntent().getExtras();
+
 
         if(this.getIntent().hasExtra("action")){
+            extras = getIntent().getExtras();
             String str_firstName = extras.getString("first_name");
             String str_lastName = extras.getString("last_name");
 
             txt_firstName.setText(str_firstName);
             txt_lastName.setText(str_lastName);
 
-            if(extras.getString("action").equals("update")) {
+            isEqualtoNull(extras.getString("action"))
+
+           if(extras.getString("action").equals("update")) {
                 button_action.setText("UPDATE");
             }
+
+           Log.e("getStringExtra",getIntent().getStringExtra("action"));
+
         }
 
         OnClickListener ocl = new OnClickListener() {
@@ -90,6 +97,9 @@ public class Main extends Activity {
         super.onRestart();
         txt_firstName.setText("");
         txt_lastName.setText("");
+    }
+    public static boolean isEqualtoNull(Object o1) {
+        return  o1 != null;
     }
 }
 

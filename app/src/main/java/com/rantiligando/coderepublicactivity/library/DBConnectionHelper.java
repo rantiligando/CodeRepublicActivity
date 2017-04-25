@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 
 public class DBConnectionHelper extends SQLiteOpenHelper{
-    
+
     protected SQLiteDatabase database;
 
     public DBConnectionHelper(Context context){
